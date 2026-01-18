@@ -290,7 +290,10 @@ class Gabc:
                     ctxt.active_clef.active_accidental = accidental
                     add_notation(accidental)
                 else:
-                    Gabc.create_note_from_data(ctxt, ctxt.active_clef, atom, notes) # Helper needed
+                    if len(atom) > 0:
+                         Gabc.create_note_from_data(ctxt, ctxt.active_clef, atom, notes) # Helper needed
+                    else:
+                         pass # Should not happen with valid regex match but safe check
 
         add_notation(None)
         return notations
@@ -307,6 +310,9 @@ class Gabc:
 
     @staticmethod
     def create_note_from_data(ctxt, clef, atom, notes_list):
+        if not atom:
+            return
+            
         # Simplistic parser for now, similar to JS
         # atom[0] is pitch
         pitch_char = atom[0]

@@ -1,7 +1,10 @@
 from enum import IntEnum, IntFlag, auto
 from typing import List, Optional, Any, Union
 import math
-from .core import Pitch, Step, Rect, Point, Size, Units
+from .core import Pitch as CorePitch, Step, Rect, Point, Size, Units
+
+# Alias for type hints if needed, but better use CorePitch
+Pitch = CorePitch
 
 # Enums
 

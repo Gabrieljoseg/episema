@@ -216,8 +216,8 @@ class Step(IntEnum):
     Ti = 11
 
 # Maps steps to an incremental position the steps take on the staff line.
-__StepToStaffPosition = [0, 0, 1, 1, 2, 3, 3, 4, 4, 5, 6, 6]
-__StaffOffsetToStep = [Step.Do, Step.Re, Step.Mi, Step.Fa, Step.So, Step.La, Step.Ti]
+_StepToStaffPosition = [0, 0, 1, 1, 2, 3, 3, 4, 4, 5, 6, 6]
+_StaffOffsetToStep = [Step.Do, Step.Re, Step.Mi, Step.Fa, Step.So, Step.La, Step.Ti]
 
 class Pitch:
     def __init__(self, step: Step, octave: int):
@@ -244,14 +244,14 @@ class Pitch:
     @staticmethod
     def step_to_staff_offset(step: int) -> int:
         # handle IntEnum or int value
-        return __StepToStaffPosition[step]
+        return _StepToStaffPosition[step]
 
     @staticmethod
     def staff_offset_to_step(offset: int) -> Step:
         while offset < 0:
-            offset = len(__StaffOffsetToStep) + offset
+            offset = len(_StaffOffsetToStep) + offset
         
-        return __StaffOffsetToStep[offset % len(__StaffOffsetToStep)]
+        return _StaffOffsetToStep[offset % len(_StaffOffsetToStep)]
 
     def __repr__(self):
         return f"Pitch(step={self.step}, octave={self.octave})"

@@ -53,7 +53,7 @@ class TestGabc(unittest.TestCase):
         self.assertEqual(note.pitch.step, Step.Fa)
 
     def test_lyrics(self):
-        gabc = "(c4) A(f)men(fg)"
+        gabc = "(c4) A(f) men(fg)"
         mappings = Gabc.create_mappings_from_source(self.ctxt, gabc)
         
         # Word 1: (c4)
